@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar and Content</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face{
+            font-family: myFont;
+            src: url(pala.ttf);
+        }
+        *{
+            font-family: myFont;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+          
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .navbar-left span{
+            font-weight: 800;
+        }
+
+        .navbar-left i {
+            font-size: 30px;
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        .navbar-middle {
+            display: flex;
+        }
+
+        .navbar-middle a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 40px; /* Reduced margin for smaller screens */
+        }
+
+        .navbar-right button {
+            padding: 5px 20px; /* Reduced padding for smaller screens */
+            background-color: white;
+            color: black;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            align-items: flex-start;
+            margin-left: 20px;
+        }
+
+        /*.div1, .div2 {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in width calculation */
+     /*       min-width: 300px; /* Minimum width for divs */
+         /*   margin-left: 200px;
+            margin-right: 200px;*/*/
+        }*/
+
+         .div1 {
+            flex: 1; /* Take up available space */
+            padding: 20px;
+            margin-right: 200px;
+        }
+
+        .div2 {
+            flex: 1; /* Take up available space */
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack buttons and paragraph vertically */
+            /* Align buttons and paragraph to the left */
+            margin-left: 640px;
+        }
+
+
+        .button-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .button-row button {
+            margin-right: 10px;
+            padding: 8px 12px; /* Reduced padding for smaller screens */
+            border-radius: 5px;
+            border: none;
+            background: #f7f6ee;
+            border: 1px solid lightgray;
+        }
+
+        .button-row .arrow-button {
+            display: flex;
+            align-items: center;
+            border-radius: 30px;
+        }
+
+        .button-row .arrow-button i {
+            margin-left: 1px;
+           
+        }
+        .button-row .top-arrow{
+            top: -4px;
+            right: 1px;
+            font-size: 20px;
+            transform: rotate(50deg);
+        }
+
+        .div2 p {
+            margin-top: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar-middle {
+                display: none; /* Hide links on smaller screens */
+            }
+
+            .navbar-right button {
+                padding: 8px 12px;
+            }
+            .div1,.div2{
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column; /* Stack divs vertically on very small screens */
+            }
+            .div1,.div2{
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        .menu-toggle {
+        display: none; /* Hidden by default */
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .navbar-middle {
+        display: flex;
+        transition: max-height 0.3s ease;
+        max-height: 200px;
+        overflow: hidden;
+    }
+
+    .navbar-middle.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+        .navbar-middle {
+            display: none; /* Hidden on small screens */
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: #f8f8f8;
+            max-height: 0;
+        }
+
+        .navbar-middle.active {
+            display: flex;
+            max-height: 500px;
+        }
+
+        .menu-toggle {
+            display: block; /* Shown on small screens */
+        }
+    }
+
+
+   
+.upana{
+    width: 100%;
+    background: red;
+}
+    
+      
+
+
+
+        .container-wrapper {
+}
+}
+    display: flex;
+   /* Center horizontally */
+    flex-wrap: wrap; /* Allow containers to wrap onto new lines */
+}
+
+.parent-container {
+   
+    margin-left: 300px; /* Space between containers */
+    margin-top: 90px;/* Consistent margin for all sides, adjust as needed */
+}
+
+.icon-text-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.icon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+}
+
+.icon-text-row .icon {
+    font-size: 24px;
+    color: #3498db;
+}
+
+.icon-text-row .text {
+    flex-grow: 1;
+}
+
+.icon-text-row h3 {
+    margin: 0 0 5px;
+    font-family: myFont;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.icon-text-row p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.vertical-line {
+    border-left: 1px solid lightgray;
+    height: 100%; /* Make the line span the wrapper height */
+    margin: 0 10px; /* Space around the line */
+}
+
+
+  .container-wrapper {
+            display: flex;
+            margin-left: 200px;
+        }
+
+        .parent-container {
+          
+            margin: 20px;
+        }
+
+        .icon-text-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+        }
+
+        .icon-background {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+             background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 25px;
+            margin-top: 7px;
+            width: 40px;
+            height: 65px;
+        }
+
+        .icon-text-row .icon {
+            font-size: 24px;
+            color: #3498db;
+        }
+
+        .icon-text-row .text {
+            flex-grow: 1;
+        }
+
+        .icon-text-row h3 {
+            margin: 0 0 5px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .icon-text-row p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .vertical-line {
+         
+            height: 120px;
+            margin-top: 30px;
+            border-right: 1px solid lightgray;
+         
+        }
+
+        .additional-divs {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+              margin-right: 25px;
+              /* Center the divs horizontally */
+        }
+
+        .additional-div {
+            width: 50px;
+            height: 10px;
+            background-color: #f0f0f0;
+            margin-bottom: 4px;
+            border-radius: 4px;
+             align-self: center;
+        }
+        .additional-div:nth-child(2){
+            width: 35px;
+            height: 5px;
+            align-self: center;
+        }
+
+        .icon-background-and-divs {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container-wrapper {
+                flex-direction: column; /* Stack containers vertically */
+                align-items: center; /* Center them horizontally */
+            }
+
+            .parent-container {
+                width: 90%; /* Take up more width on smaller screens */
+                margin: 10px 0; /* Reduce margins */
+            }
+
+            .vertical-line {
+                display: none; /* Hide vertical line */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .icon-background {
+                width: 50px;
+                height: 35px;
+            }
+
+            .additional-div {
+                width: 50px;
+            }
+
+            .additional-div:nth-child(2) {
+                width: 35px;
+            }
+
+            .icon-text-row h3 {
+                font-size: 16px;
+            }
+
+            .icon-text-row p {
+                font-size: 12px;
+            }
+        }
+
+
+
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 900px) {
+    .parent-container {
+        width: 90%; /* Allow containers to take more width on smaller screens */
+        margin: 20px auto; /* Center and reduce margin */
+    }
+}
+
+@media (max-width: 600px) {
+    .icon-background {
+        width: 50px;
+        height: 50px;
+        padding: 8px;
+    }
+
+    .icon-text-row .icon {
+        font-size: 20px;
+    }
+
+    .icon-text-row h3 {
+        font-size: 16px;
+    }
+
+    .icon-text-row p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .icon-text-row {
+        flex-direction: column; /* Stack icon and text on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .icon-background {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <i class="fas fa-chart-line"></i> <span>heexo</span>
+        </div>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="navbar-middle">
+            <a href="#">Why Heexo</a>
+            <a href="#">Platform</a>
+            <a href="#">Solutions</a>
+            <a href="#">Changelog</a>
+        </div>
+        <div class="navbar-right">
+            <button>Book a Demo</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="div1">
+            <h2>The Database for<br> modern Applications</h2>
+        </div>
+        <div class="div2">
+            <div class="button-row">
+                <button>Start 14-day trial</button>
+                <button class="arrow-button"> <i class="fas fa-arrow-up top-arrow"></i></button>
+            </div>
+            <p>Huree  centralize data form your entire tech<br>and database creating one clear view of performance </p>
+        </div>
+    </div>
+    <div class="upana">
+        
+    </div>
+    <div class="container-wrapper">
+        <div class="parent-container">
+            <div class="icon-text-row">
+                <div class="icon-background-and-divs">
+                    <div class="icon-background">
+                        <i class="fas fa-info-circle icon"></i>
+                    </div>
+                    <div class="additional-divs">
+                        <div class="additional-div"></div>
+                        <div class="additional-div"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <h3>Use your database <br>with your stack</h3>
+                    <p>We offer client and server libraries in everything<br>from react and ruby to ios.</p>
+                </div>
+            </div>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="parent-container">
+            <div class="icon-text-row">
+                <div class="icon-background-and-divs">
+                    <div class="icon-background">
+                        <i class="fas fa-check-circle icon"></i>
+                    </div>
+                    <div class="additional-divs">
+                        <div class="additional-div"></div>
+                        <div class="additional-div"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <h3>Security<br>& privacy </h3>
+                    <p>Database supports p11 data encrypted with <br> AES-256 at rest or explicit user consent flow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbarMiddle = document.querySelector('.navbar-middle');
+    
+        menuToggle.addEventListener('click', () => {
+            navbarMiddle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
